@@ -33,13 +33,10 @@ def load_dataset():
 	# read dataset from *.CSV file
 	# the dataset file is CSV file.
 	dataFrame = pandas.read_csv("../data/financial_log.csv", header=0)
-	dataset = dataFrame.values
-	X = dataset[:, 0:9]
-	Y = dataset[:, 9]
 
 	# calculate the elapsed time
 	end = time.time()
 	print("Done. Elapsed time : %f seconds" % (end - start))
 
 	# return training dataset with input X and output Y
-	return X, Y
+	return dataFrame

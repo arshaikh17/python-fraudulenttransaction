@@ -16,10 +16,10 @@ os.system("cls")
 print("\nTraining procedure...")
 
 # read dataset
-X, Y = load_dataset()
+df = load_dataset()
 
 # # preprocess the dataset
-X, Y = preprocess_dataset(X, Y)
+X, Y = preprocess_dataset(df)
 
 # load model
 model = get_model()
