@@ -14,7 +14,8 @@ DATASET OVERVIEW
 
 [5 rows x 11 columns]
 Done. Elapsed time : 27.036362 seconds
-                                                                                                                                                                                                      Loaded training NN model
+
+Loaded training NN model
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -26,10 +27,12 @@ dense_2 (Dense)              (None, 1)                 19
                                                        Trainable params: 199
                                                        Non-trainable params: 0
 _________________________________________________________________
+
 Train on 5090096 samples, validate on 1272524 samples
 Epoch 1/100
 2018-07-12 02:12:14.179561: E T:\src\github\tensorflow\tensorflow\stream_executor\cuda\cuda_driver.cc:406] failed call to cuInit: CUDA_ERROR_UNKNOWN
-2018-07-12 02:12:14.213093: I T:\src\github\tensorflow\tensorflow\stream_executor\cuda\cuda_diagnostics.cc:158] retrieving CUDA diagnostic information for host: BUTTERFLY-PC                                                                   2018-07-12 02:12:14.222394: I T:\src\github\tensorflow\tensorflow\stream_executor\cuda\cuda_diagnostics.cc:165] hostname: BUTTERFLY-PC
+2018-07-12 02:12:14.213093: I T:\src\github\tensorflow\tensorflow\stream_executor\cuda\cuda_diagnostics.cc:158] retrieving CUDA diagnostic information for host: BUTTERFLY-PC
+2018-07-12 02:12:14.222394: I T:\src\github\tensorflow\tensorflow\stream_executor\cuda\cuda_diagnostics.cc:165] hostname: BUTTERFLY-PC
 5090096/5090096 [==============================] - 256s 50us/step - loss: 0.0035 - acc: 0.9993 - val_loss: 0.0134 - val_acc: 0.9980
 Epoch 2/100
 5090096/5090096 [==============================] - 251s 49us/step - loss: 0.0022 - acc: 0.9996 - val_loss: 0.0098 - val_acc: 0.9983
