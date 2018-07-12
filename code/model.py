@@ -25,7 +25,7 @@ def get_model():
 		activation='sigmoid'))
 
 	# load model weights
-	# model.load_weights('weight_model.h5')
+	model.load_weights('weight_model.h5')
 
 	# compile the neural network model
 	model.compile(loss='binary_crossentropy',
