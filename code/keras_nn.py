@@ -28,7 +28,7 @@ model.summary()
 # fit and save the model for later usage
 model.fit(X, Y,
 	validation_split=0.20,
-	epochs=100,
+	epochs=10,
 	batch_size=20)
 model.save_weights('weight_model.h5')
 

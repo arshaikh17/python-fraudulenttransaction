@@ -21,11 +21,13 @@ def get_model():
 	model.add(Dense(units=18,
 		input_dim=9,
 		activation='relu'))
+	model.add(Dense(units=9,
+		activation='relu'))
 	model.add(Dense(units=1,
 		activation='sigmoid'))
 
 	# load model weights
-	model.load_weights('weight_model.h5')
+	# model.load_weights('weight_model.h5')
 
 	# compile the neural network model
 	model.compile(loss='binary_crossentropy',
