@@ -7,6 +7,7 @@ Created on Tue Jul 9 8:16:06 2018
 import time
 import numpy as np
 from keras.utils import np_utils
+from sklearn import preprocessing
 from sklearn.preprocessing import LabelEncoder
 
 
@@ -47,7 +48,9 @@ def preprocess_dataset(df):
 	# variables
 	dataset = df.values
 	X = dataset[:, 0:9]
-	Y = dataset[9]
+	Y = dataset[:, 9]
+
+	X = preprocessing.scale(X)
 
 	# calculate the elapsed time
 	end = time.time()

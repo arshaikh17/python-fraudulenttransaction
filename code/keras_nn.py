@@ -25,13 +25,13 @@ X, Y = preprocess_dataset(df)
 model = get_model()
 model.summary()
 
-# # fit and save the model for later usage
-# model.fit(X, Y,
-# 	validation_split=0.20,
-# 	epochs=100,
-# 	batch_size=20)
-# model.save_weights('weight_model.h5')
+# fit and save the model for later usage
+model.fit(X, Y,
+	validation_split=0.20,
+	epochs=100,
+	batch_size=20)
+model.save_weights('weight_model.h5')
 
-# # evaluate the model
-# scores = model.evaluate(X, Y)
-# print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+# evaluate the model
+scores = model.evaluate(X, Y)
+print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
