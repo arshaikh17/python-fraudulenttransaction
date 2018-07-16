@@ -1,6 +1,6 @@
 
 """
-Created on Tue Jul 9 8:16:06 2018
+Created on Tue Jul 15 10:19:57 2018
 @author: Ali Rasheed
 
 """
@@ -9,9 +9,9 @@ from keras.layers import Dense
 from keras.models import Sequential
 
 
-# return neural network model
-def get_model():
-	print("\nLoaded training NN model")
+# covnert from weight model to common model (h5 format)
+def convert_model():
+	print("\nConverting weight information to model ...")
 
 	# build neural network using Keras python machine learning library
 	# input layer  :	[9]
@@ -29,12 +29,17 @@ def get_model():
 		activation='sigmoid'))
 
 	# load model weights
-	# model.load_weights('weight_model.h5')
+	model.load_weights('weight_model.h5')
 
 	# compile the neural network model
 	model.compile(loss='binary_crossentropy',
 		optimizer='adam',
 		metrics=['accuracy'])
 
-	# return neural network model
-	return model
+	# save neural network model for compatibility
+	model.save('nn_model.h5')
+	
+
+# main method
+if __name__ == "__main__":
+	convert_model()

@@ -8,7 +8,6 @@ import time
 import numpy as np
 from keras.utils import np_utils
 from sklearn import preprocessing
-from sklearn.preprocessing import LabelEncoder
 
 
 """
@@ -33,12 +32,6 @@ def preprocess_dataset(df):
 	# start time tracker
 	print("\nEncoding train dataset")
 	start = time.time()
-
-	# encode the dataset field using "One hot encoding"
-	# encoder = LabelEncoder()
-	# encoder.fit(X)
-	# encoded = encoder.transform(X)
-	# result = np_utils.to_categorical(encoded)
 
 	# convert to numeric data
 	df = convert(df)
