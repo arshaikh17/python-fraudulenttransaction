@@ -10,7 +10,7 @@ import pandas
 
 
 # return training input and output data
-def load_dataset():
+def load_dataset(file):
 	# DATASET HEADER FORMAT
 	#
 	# step - maps a unit of time in the real world. In this case 1 step is 1 hour of time. Total steps 744 (30 days simulation).
@@ -32,7 +32,7 @@ def load_dataset():
 
 	# read dataset from *.CSV file
 	# the dataset file is CSV file.
-	dataFrame = pandas.read_csv("../data/financial_log.csv", header=0)
+	dataFrame = pandas.read_csv(file, header=0)
 
 	# calculate the elapsed time
 	end = time.time()

@@ -10,7 +10,7 @@ from keras.models import Sequential
 
 
 # covnert from weight model to common model (h5 format)
-def convert_model():
+def convert_model(weight_h5):
 	print("\nConverting weight information to model ...")
 
 	# build neural network using Keras python machine learning library
@@ -29,7 +29,7 @@ def convert_model():
 		activation='sigmoid'))
 
 	# load model weights
-	model.load_weights('weight_model.h5')
+	model.load_weights(weight_h5)
 
 	# compile the neural network model
 	model.compile(loss='binary_crossentropy',
@@ -38,6 +38,7 @@ def convert_model():
 
 	# save neural network model for compatibility
 	model.save('nn_model.h5')
+	return model
 	
 
 # main method

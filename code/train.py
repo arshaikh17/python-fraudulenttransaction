@@ -16,9 +16,10 @@ os.system("cls")
 print("\nTraining procedure...")
 
 # read dataset
-df = load_dataset()
+file = "../data/financial_log.csv"
+df = load_dataset(file)
 
-# # preprocess the dataset
+# preprocess the dataset
 X, Y = preprocess_dataset(df)
 
 # load model
