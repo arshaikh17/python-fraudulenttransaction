@@ -15,16 +15,16 @@ def get_model():
 
 	# build neural network using Keras python machine learning library
 	# input layer  :	[7]
-	# hidden layer :	[14, 14, 7]
+	# hidden layer :	[14]
 	# output layer :	[1]
 	model = Sequential()
 	model.add(Dense(units=14,
 		input_dim=7,
 		activation='relu'))
-	model.add(Dense(units=14,
-		activation='relu'))
-	model.add(Dense(units=7,
-		activation='relu'))
+	# model.add(Dense(units=14,
+	# 	activation='relu'))
+	# model.add(Dense(units=7,
+		# activation='relu'))
 	model.add(Dense(units=1,
 		activation='sigmoid'))
 
