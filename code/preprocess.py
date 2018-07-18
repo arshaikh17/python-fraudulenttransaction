@@ -40,8 +40,8 @@ def preprocess_dataset(df):
 
 	# variables
 	dataset = df.values
-	X = dataset[:, 0:9]
-	Y = dataset[:, 9]
+	X = dataset[:, 0:7]
+	Y = dataset[:, 7]
 
 	X = preprocessing.scale(X)
 

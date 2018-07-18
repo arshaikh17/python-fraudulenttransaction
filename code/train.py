@@ -19,6 +19,8 @@ print("\nTraining procedure...")
 file = "../data/financial_log.csv"
 df = load_dataset(file)
 
+# print(df.columns)
+
 # preprocess the dataset
 X, Y = preprocess_dataset(df)
 
