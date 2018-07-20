@@ -19,8 +19,6 @@ print("\nTraining procedure...")
 file = "../data/financial_log.csv"
 df = load_dataset(file)
 
-# print(df.columns)
-
 # preprocess the dataset
 X, Y = preprocess_dataset(df)
 
@@ -31,8 +29,8 @@ model.summary()
 # fit and save the model for later usage
 model.fit(X, Y,
 	validation_split=0.20,
-	epochs=10,
-	batch_size=20)
+	epochs=20,
+	batch_size=32)
 model.save_weights('weight_model.h5')
 
 # evaluate the model

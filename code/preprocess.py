@@ -36,7 +36,7 @@ def preprocess_dataset(df):
 	# convert to numeric data
 	df = convert(df)
 	print("DATASET OVERVIEW")
-	print(df.head())
+	print(df.head(20))
 
 	# variables
 	dataset = df.values
@@ -66,6 +66,7 @@ def convert(df):
 			return text_digit_vals[val]
 
 		# check the datatype (int64 or float64)
+		# convert the non-numeric value to numeric value
 		if df[column].dtype != np.int64 and df[column].dtype != np.float64:
 			column_contents = df[column].values.tolist()
 			unique_elements = set(column_contents)
