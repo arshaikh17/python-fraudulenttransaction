@@ -22,7 +22,7 @@ df = load_dataset(file)
 # preprocess the dataset
 X, Y = preprocess_dataset(df)
 
-# load model
+# load model and see the model architecture
 model = get_model()
 model.summary()
 

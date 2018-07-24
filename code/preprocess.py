@@ -39,10 +39,12 @@ def preprocess_dataset(df):
 	print(df.head(20))
 
 	# variables
+	# need to check if this is useful
 	dataset = df.values
 	X = dataset[:, 0:7]
 	Y = dataset[:, 7]
 
+	# normalization
 	X = preprocessing.scale(X)
 
 	# calculate the elapsed time

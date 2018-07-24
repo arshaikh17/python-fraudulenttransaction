@@ -35,6 +35,7 @@ def load_dataset(file):
 	dataFrame = pandas.read_csv(file, header=0)
 
 	# remove nameOrig and nameDest column
+	# for simplicity, remove these two columns since it is useless
 	dataFrame = dataFrame.drop(['nameOrig', 'nameDest'], axis=1)
 
 	# calculate the elapsed time
