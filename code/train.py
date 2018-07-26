@@ -11,28 +11,37 @@ from preprocess import preprocess_dataset
 from model import get_model
 
 
-# main procedure start
-os.system("cls")
-print("\nTraining procedure...")
+def train():
+	# main procedure start
+	os.system("cls")
+	print("\nTraining procedure...")
 
-# read dataset
-file = "../data/financial_log.csv"
-df = load_dataset(file)
+	# read dataset
+	# file = "../data/creditcard.csv"
+	file = "../data/financial_log.csv"
+	df = load_dataset(file)
 
-# preprocess the dataset
-X, Y = preprocess_dataset(df)
+	# preprocess the dataset
+	# it may be not essential
+	X, Y = preprocess_dataset(df)
 
-# load model and see the model architecture
-model = get_model()
-model.summary()
+	# load model and see the model architecture
+	model = get_model()
 
-# fit and save the model for later usage
-model.fit(X, Y,
-	validation_split=0.20,
-	epochs=20,
-	batch_size=32)
-model.save_weights('weight_model.h5')
+	# model summary
+	model.summary()
 
-# evaluate the model
-scores = model.evaluate(X, Y)
-print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+	# fit and save the model for later usage
+	model.fit(X, Y,
+		validation_split=0.20,	# we use 20% dataset for validation
+		epochs=20,				# simply set the maximum log as 20
+		batch_size=32)			# batch training for saving training time
+	model.save_weights('weight_model.h5')
+
+	# evaluate the model
+	scores = model.evaluate(X, Y)
+	print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+
+
+if __name == '__main__':
+	train()
