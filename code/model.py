@@ -20,6 +20,8 @@ def get_model():
 	model = Sequential()
 
 	# hidden layer
+	# we can use many activation functions here.
+	# for non-linear function, we often use ReLU.
 	model.add(Dense(units=14,
 		input_dim=7,
 		activation='relu'))
@@ -35,9 +37,11 @@ def get_model():
 		activation='sigmoid'))
 
 	# load model weights
-	# model.load_weights('weight_model.h5')
+	# model.load_weights('weight_model.hdf5')
 
 	# compile the neural network model
+	# there are only 2 classes - real and fraud
+	# we can simulate this as 0 and 1 (binary representation)
 	model.compile(loss='binary_crossentropy',
 		optimizer='adam',
 		metrics=['accuracy'])

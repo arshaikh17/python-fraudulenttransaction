@@ -26,6 +26,7 @@ def train():
 	X, Y = preprocess_dataset(df)
 
 	# load model and see the model architecture
+	# transfer learning
 	model = get_model()
 
 	# model summary
@@ -36,7 +37,7 @@ def train():
 		validation_split=0.20,	# we use 20% dataset for validation
 		epochs=20,				# simply set the maximum log as 20
 		batch_size=32)			# batch training for saving training time
-	model.save_weights('weight_model.h5')
+	model.save_weights('weight_model.hdf5')
 
 	# evaluate the model
 	scores = model.evaluate(X, Y)

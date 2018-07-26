@@ -34,6 +34,7 @@ def preprocess_dataset(df):
 	start = time.time()
 
 	# convert to numeric data
+	# show first 20 rows dataset for poc
 	df = convert(df)
 	print("DATASET OVERVIEW")
 	print(df.head(20))
@@ -45,6 +46,7 @@ def preprocess_dataset(df):
 	Y = dataset[:, 7]
 
 	# normalization
+	# it is useful to batch normalization
 	X = preprocessing.scale(X)
 
 	# calculate the elapsed time
