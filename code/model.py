@@ -15,7 +15,7 @@ def get_model():
 
 	# build neural network using Keras python machine learning library
 	# input layer  :	[7]
-	# hidden layer :	[14, 28, 14, 7, 1]
+	# hidden layer :	[14, 28, 14, 7]
 	# output layer :	[1]
 	model = Sequential()
 
