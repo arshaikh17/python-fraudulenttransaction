@@ -6,6 +6,7 @@ Created on Tue Jul 9 8:16:06 2018
 """
 
 import os
+import platform
 from util import load_dataset
 from preprocess import preprocess_dataset
 from model import get_model
@@ -13,8 +14,12 @@ import matplotlib.pyplot as plt
 
 
 def train():
+	if platform.system() == 'Windows':
+		os.system("cls")		# for windows
+	else:
+		os.system("clear")	# for linux, macos
+
 	# main procedure start
-	os.system("cls")
 	print("\nTraining procedure...")
 
 	# read dataset
@@ -36,7 +41,7 @@ def train():
 	# fit and save the model for later usage
 	history = model.fit(X, Y,
 		validation_split=0.20,	# we use 20% dataset for validation
-		epochs=5,				# simply set the maximum log as 20
+		epochs=2,				# simply set the maximum log as 20
 		batch_size=32)			# batch training for saving training time
 	model.save_weights('weight_model.hdf5')
 
