@@ -9,6 +9,7 @@ import os
 from util import load_dataset
 from preprocess import preprocess_dataset
 from model import get_model
+import matplotlib.pyplot as plt
 
 
 def train():
@@ -33,9 +34,9 @@ def train():
 	model.summary()
 
 	# fit and save the model for later usage
-	model.fit(X, Y,
+	history = model.fit(X, Y,
 		validation_split=0.20,	# we use 20% dataset for validation
-		epochs=20,				# simply set the maximum log as 20
+		epochs=5,				# simply set the maximum log as 20
 		batch_size=32)			# batch training for saving training time
 	model.save_weights('weight_model.hdf5')
 
@@ -43,6 +44,28 @@ def train():
 	scores = model.evaluate(X, Y)
 	print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
+	# show training graph
+	# list all data in history
+	print(history.history.keys())
+	
+	# summarize history for accuracy
+	plt.plot(history.history['acc'])
+	plt.plot(history.history['val_acc'])
+	plt.title('model accuracy')
+	plt.ylabel('accuracy')
+	plt.xlabel('epoch')
+	plt.legend(['train', 'test'], loc='upper left')
+	plt.show()
 
-if __name == '__main__':
+	# summarize history for loss
+	plt.plot(history.history['loss'])
+	plt.plot(history.history['val_loss'])
+	plt.title('model loss')
+	plt.ylabel('loss')
+	plt.xlabel('epoch')
+	plt.legend(['train', 'test'], loc='upper left')
+	plt.show()
+
+
+if __name__ == '__main__':
 	train()
