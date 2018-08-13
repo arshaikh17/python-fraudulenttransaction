@@ -6,32 +6,46 @@ Created on Tue Jul 16 21:25:24 2018
 """
 
 import os
+import platform
 from util import load_dataset
 from weight2model import convert_model
 from model import get_model
-from preprocess import convert
+from preprocess import analyze_dataset
 from sklearn import preprocessing
 
 
-# main procedure start
-os.system("cls")
-print("\nTesting ...")
+def test():
+	# main procedure start
+	if platform.system() == 'Windows':
+		os.system("cls")	# for windows
+	else:
+		os.system("clear")	# for linux, macos
 
-# read test dataset
-file = "../data/financial_test.csv"
-df = load_dataset(file)
-df = convert(df)
-Xnew = preprocessing.scale(df.values)
+	print("\nTesting ...")
 
-# load model
-weight = 'weight_model.hdf5'
-model = convert_model(weight)
-model.summary()
+	# read test dataset
+	file = "../data/financial_test.csv"
+	df = load_dataset(file)
+	Xnew = analyze_dataset(df)
 
-# make a prediction
-ynew = model.predict_classes(Xnew)
-prob_new = model.predict_proba(Xnew)
+	# load model
+	weight = 'weight_model.hdf5'
+	model = convert_model(weight)
+	model.summary()
 
-# show the inputs and predicted outputs
-for i in range(len(Xnew)):
-	print("Predicted=%s, Confidence level=%s" % (ynew[i], prob_new[i]))
+	# make a prediction
+	ynew = model.predict_classes(Xnew)
+
+	# show the inputs and predicted outputs
+	for i in range(len(Xnew)):
+		if ynew[i] == 0:
+			class_label = 'Normal'
+		else:
+			class_label = 'Fradulent'
+
+		print("%d --> class=%s" % (i, class_label))
+
+
+# call main function
+if __name__ == '__main__':
+	test()

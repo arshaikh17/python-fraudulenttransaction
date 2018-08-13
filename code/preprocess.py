@@ -47,7 +47,7 @@ def preprocess_dataset(df):
 
 	# normalization
 	# it is useful to batch normalization
-	X = preprocessing.scale(X)
+	# X = preprocessing.scale(X)
 
 	# calculate the elapsed time
 	end = time.time()
@@ -55,6 +55,20 @@ def preprocess_dataset(df):
 
 	# return categorical result
 	return X, Y
+
+
+# preprocess the dataset
+def analyze_dataset(df):
+	# convert to numeric data
+	df = convert(df)
+
+	# variables
+	dataset = df.values
+	X = dataset[:, 0:7]
+
+	# normalization
+	# X = preprocessing.scale(X)
+	return X
 
 
 # convert non-numeric data to numeric data format
@@ -84,4 +98,5 @@ def convert(df):
 
 			df[column] = list(map(convert_to_int, df[column]))
 
+	print(text_digit_vals)
 	return df
