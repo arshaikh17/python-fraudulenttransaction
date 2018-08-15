@@ -25,7 +25,7 @@ def test():
 
 	# read test dataset
 	# file = "../data/paysim_normal.csv"
-	file = "../data/paysim_fraud.csv"
+	file = "../data/paysim_test.csv"
 	df = load_dataset(file)
 	Xnew = get_test_dataset(df)
 
