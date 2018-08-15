@@ -1,7 +1,7 @@
 
 """
 Created on Tue Jul 10 13:24:41 2018
-@author: Ali Rasheed
+@author: Paul Raita
 
 """
 
@@ -34,9 +34,9 @@ def load_dataset(file):
 	# the dataset file is CSV file.
 	dataFrame = pandas.read_csv(file, header=0)
 
-	# remove nameOrig and nameDest column
-	# for simplicity, remove these two columns since it is useless
-	dataFrame = dataFrame.drop(['nameOrig', 'nameDest'], axis=1)
+	# remove step, nameOrig and nameDest column
+	# for simplicity, remove these 3 columns since it is useless
+	dataFrame = dataFrame.drop(['step', 'nameOrig', 'nameDest'], axis=1)
 
 	# calculate the elapsed time
 	end = time.time()

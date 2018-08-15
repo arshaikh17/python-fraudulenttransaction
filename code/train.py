@@ -1,7 +1,7 @@
 
 """
 Created on Tue Jul 9 8:16:06 2018
-@author: Ali Rasheed
+@author: Paul Raita
 
 """
 
@@ -9,7 +9,7 @@ import os
 import platform
 from util import load_dataset
 from model import get_model
-from preprocess import preprocess_dataset
+from preprocess import get_training_dataset
 import matplotlib.pyplot as plt
 
 
@@ -24,12 +24,12 @@ def train():
 
 	# read dataset
 	# file = "../data/creditcard.csv"
-	file = "../data/financial_log.csv"
+	file = "../data/paysim.csv"
 	df = load_dataset(file)
 
 	# preprocess the dataset
 	# it may be not essential
-	X, Y = preprocess_dataset(df)
+	X, Y = get_training_dataset(df)
 
 	# load model and see the model architecture
 	# transfer learning
@@ -42,6 +42,7 @@ def train():
 	history = model.fit(X, Y,
 		validation_split=0.20,	# we use 20% dataset for validation
 		epochs=10,				# simply set the maximum log as 20
+		shuffle=True,
 		batch_size=32)			# batch training for saving training time
 	model.save_weights('weight_model.hdf5')
 

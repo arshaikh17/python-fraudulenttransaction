@@ -1,7 +1,7 @@
 
 """
-Created on Tue Jul 9 8:16:06 2018
-@author: Ali Rasheed
+Created on Tue Jul 9 8:19:45 2018
+@author: Ali Paul Raita
 
 """
 import time
@@ -29,45 +29,65 @@ header = [
 
 # preprocess the dataset
 def preprocess_dataset(df):
+	# need to check if this is useful
+	df = df.loc[(df.type == 'TRANSFER') | (df.type == 'CASH_OUT')]
+	# df.loc[df.type == 'PAYMENT', 'type'] = 0
+	df.loc[df.type == 'TRANSFER', 'type'] = 0
+	# df.loc[df.type == 'CASH_IN', 'type'] = 2
+	df.loc[df.type == 'CASH_OUT', 'type'] = 1
+	# df.loc[df.type == 'DEBIT', 'type'] = 4
+
+	# convert dtype('O') to dtype(int)
+	df.type = df.type.astype(int)
+	
+	# return categorical result
+	return df
+
+
+# get the training dataset X, Y
+def get_training_dataset(df):
 	# start time tracker
-	print("\nEncoding train dataset")
+	print("\nPreprocessing train dataset")
 	start = time.time()
 
 	# convert to numeric data
 	# show first 20 rows dataset for poc
-	df = convert(df)
+	# df = convert(df)
 	print("DATASET OVERVIEW")
 	print(df.head(20))
 
-	# variables
-	# need to check if this is useful
-	dataset = df.values
-	X = dataset[:, 0:7]
-	Y = dataset[:, 7]
+	# preprocessing
+	df = preprocess_dataset(df)
 
-	# normalization
-	# it is useful to batch normalization
-	# X = preprocessing.scale(X)
+	# show first 20 rows dataset for poc
+	# df = convert(df)
+	print("EXTRACT OVERVIEW")
+	print(df.head(20))
+
+	dataset = df.values
+
+	# training dataset
+	X = dataset[:, 0:6]
+	Y = dataset[:, 6]
 
 	# calculate the elapsed time
 	end = time.time()
 	print("Done. Elapsed time : %f seconds" % (end - start))
 
-	# return categorical result
+	# return
 	return X, Y
 
 
-# preprocess the dataset
-def analyze_dataset(df):
-	# convert to numeric data
-	df = convert(df)
-
-	# variables
+# get the test dataset X
+def get_test_dataset(df):
+	# preprocessing
+	df = preprocess_dataset(df)
 	dataset = df.values
-	X = dataset[:, 0:7]
 
-	# normalization
-	# X = preprocessing.scale(X)
+	# test dataset
+	X = dataset[:, 0:6]
+
+	# return
 	return X
 
 

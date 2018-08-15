@@ -40,12 +40,15 @@ model.compile(loss='binary_crossentropy',
 
     # predict model
 ynew = model.predict_classes(X)
+probs = model.predict_proba(X)
 
 # show the inputs and predicted outputs
 for i in range(len(X)):
     if ynew[i] == 0:
         class_label = 'Normal'
+        prob = 50 + 100 * (0.5 - probs[i])
     else:
         class_label = 'Fradulent'
+        prob = 50 + 100 * (probs[i] - 0.5)
 
-    print("%d --> class=%s" % (i, class_label))
+    print("%d --> class=%s, confidence=%.2f%%" % (i, class_label, prob))
